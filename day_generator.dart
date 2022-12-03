@@ -48,7 +48,13 @@ class Day$dayNumber extends GenericDay {
   }
 
   @override
-  int solution() {
+  int solvePart1() {
+    
+    return 0;
+  }
+
+  @override
+  int solvePart2() {
 
     return 0;
   }

@@ -11,12 +11,14 @@ abstract class GenericDay {
         input = InputUtil(day);
 
   dynamic parseInput();
-  int solution();
+  int solvePart1();
+  int solvePart2();
 
   void printSolutions() {
     print("-------------------------");
     print("         Day $day        ");
-    print("Solution for puzzle: ${solution()}");
+    print("Solution for puzzle one: ${solvePart1()}");
+    print("Solution for puzzle two: ${solvePart2()}");
     print("\n");
   }
 }

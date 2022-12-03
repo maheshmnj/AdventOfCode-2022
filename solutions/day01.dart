@@ -3,13 +3,13 @@ import '../utils/index.dart';
 class Day01 extends GenericDay {
   Day01() : super(1);
 
-  List<List<String>> calories =[];
   @override
   parseInput() {
+    
   }
 
   @override
-  int solution() {
+  int solvePart1() {
     final inputs = input.asString.replaceAll('\n', ',');
     final List<String> totalInputs = inputs.split(',').toList();
     int maxSum = 0;
@@ -26,6 +26,13 @@ class Day01 extends GenericDay {
       }
     }
     return maxSum;
+    return 0;
+  }
+
+  @override
+  int solvePart2() {
+
+    return 0;
   }
 }
 
