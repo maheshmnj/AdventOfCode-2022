@@ -32,26 +32,28 @@ class Day02 extends GenericDay {
       final player = pairs.elementAt(i).second;
       Game result = fight(opponent, player);
       final int bonus = toolScore(player);
-      if(result ==Game.win){
-        totalScore+=winScore+bonus;
-      }else if(result == Game.lose){
-        totalScore+=loseScore+bonus;
-      }else{
-        totalScore+=drawScore+bonus;
+      if (result == Game.win) {
+        totalScore += winScore + bonus;
+      } else if (result == Game.lose) {
+        totalScore += loseScore + bonus;
+      } else {
+        totalScore += drawScore + bonus;
       }
     }
     return totalScore;
   }
-  int toolScore(String player){
+
+  int toolScore(String player) {
     switch (player) {
       case 'X':
-      return 1;
+        return 1;
       case 'Y':
-      return 2;
+        return 2;
       default:
-      return 3;
+        return 3;
     }
   }
+
   // returns player2 game result win,loose, draw
   Game fight(String player1, player2) {
     if (isDraw(player1, player2)) {
@@ -60,7 +62,7 @@ class Day02 extends GenericDay {
       if (player1 == 'A') {
         // A-Y
         if (player2 == 'Y') {
-            return Game.win;
+          return Game.win;
         } else {
           // A-Z
           return Game.lose;
@@ -80,7 +82,6 @@ class Day02 extends GenericDay {
         } else {
           // C-Y
           return Game.lose;
-
         }
       }
     }
@@ -97,7 +98,67 @@ class Day02 extends GenericDay {
 
   @override
   int solvePart2() {
-    return 0;
+    final pairs = parseInput();
+    int winScore = 6;
+    int drawScore = 3;
+    int loseScore = 0;
+    int totalScore = 0;
+    for (int i = 0; i < pairs.length; i++) {
+      final opponent = pairs.elementAt(i).first;
+      final player = pairs.elementAt(i).second;
+      Game desired = resultDesired(player);
+      String choosenTool = desiredTool(desired,opponent);
+      final int bonus = toolScore(choosenTool);
+      if (desired == Game.win) {
+        totalScore += winScore + bonus;
+      } else if (desired == Game.lose) {
+        totalScore += loseScore + bonus;
+      } else {
+        totalScore += drawScore + bonus;
+      }
+    }
+    return totalScore;
+  }
+
+  Game resultDesired(String player) {
+    switch (player) {
+      case 'X':
+        return Game.lose;
+      case 'Y':
+        return Game.draw;
+      default:
+        return Game.win;
+    }
+  }
+
+  String desiredTool(Game result, opponent) {
+    if(result == Game.win){
+      if(opponent == 'A'){
+          return 'Y';
+      }else if(opponent == 'B'){
+          return 'Z';
+      }else{
+          return 'X';
+      }
+    } else if(result ==Game.lose){
+      if(opponent == 'A'){
+          return 'Z';
+      }else if(opponent == 'B'){
+          return 'X';
+      }else{
+          return 'Y';
+      }
+
+    }else{
+      if(opponent == 'A'){
+        return 'X';
+      }else if(opponent == 'B'){
+        return 'Y';
+      }else{
+        return 'Z';
+      }
+
+    }
   }
 }
 
