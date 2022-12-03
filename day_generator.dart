@@ -5,7 +5,7 @@ import 'dart:io';
 /// Call with `dart run day_generator.dart <day>`
 void main(List<String?> args) async {
   String year = '2022';
-  String session = '<your session cookie here>';
+  String session = '';
 
   if (args.length > 1) {
     print('Please call with: <dayNumber>');
@@ -48,13 +48,7 @@ class Day$dayNumber extends GenericDay {
   }
 
   @override
-  int solvePart1() {
-    
-    return 0;
-  }
-
-  @override
-  int solvePart2() {
+  int solution() {
 
     return 0;
   }
